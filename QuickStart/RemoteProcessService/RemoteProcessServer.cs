@@ -8,7 +8,7 @@ using SuperSocket.Common;
 using SuperSocket.SocketServiceCore;
 using SuperSocket.SocketServiceCore.Config;
 
-namespace RemoteProcessService
+namespace SuperSocket.QuickStart.RemoteProcessService
 {
     public class RemoteProcessServer : AppServer<RemotePrcessSession>
     {

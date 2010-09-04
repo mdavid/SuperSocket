@@ -5,7 +5,7 @@ using System.Text;
 using SuperSocket.SocketServiceCore.Command;
 using System.Diagnostics;
 
-namespace RemoteProcessService.Command
+namespace SuperSocket.QuickStart.RemoteProcessService.Command
 {
     public class LIST : CommandBase<RemotePrcessSession>
     {

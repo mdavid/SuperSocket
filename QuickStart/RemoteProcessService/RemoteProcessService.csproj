@@ -8,8 +8,8 @@
     <ProjectGuid>{CA67AA73-42D0-4A08-85C4-61FB569231A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RemoteProcessService</RootNamespace>
-    <AssemblyName>RemoteProcessService</AssemblyName>
+    <RootNamespace>SuperSocket.QuickStart.RemoteProcessService</RootNamespace>
+    <AssemblyName>SuperSocket.QuickStart.RemoteProcessService</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -60,15 +60,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Common.csproj">
+    <ProjectReference Include="..\..\Common\Common.csproj">
       <Project>{A24F4D38-BA9C-4FD6-95B7-4980DE36131A}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\SocketServiceCore\SocketServiceCore.csproj">
+    <ProjectReference Include="..\..\SocketServiceCore\SocketServiceCore.csproj">
       <Project>{153FEF72-191C-43D9-BE71-2B351C7AC760}</Project>
       <Name>SocketServiceCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\SocketService\SocketService.csproj">
+    <ProjectReference Include="..\..\SocketService\SocketService.csproj">
       <Project>{B9113694-7226-4152-938D-3172B11571A1}</Project>
       <Name>SocketService</Name>
     </ProjectReference>

@@ -4,23 +4,25 @@ using System.Linq;
 using System.Text;
 using SuperSocket.SocketServiceCore;
 
-namespace RemoteProcessService
+namespace SuperSocket.QuickStart.BroadcastService
 {
-    public class RemotePrcessSession : AppSession<RemotePrcessSession, RemoteProcessServer>
+    public class BroadcastSession : AppSession<BroadcastSession, BroadcastServer>
     {
+        public string DeviceNumber { get; set; }
+
         protected override void OnClosed()
         {
-            
+            AppServer.RemoveOnlineSession(this);   
         }
 
         public override void SayWelcome()
         {
-            SendResponse("Welcome to use this tool!");
+            
         }
 
         public override void HandleExceptionalError(Exception e)
         {
-            SendResponse("An error has occurred in server side! Error message: " + e.Message + "!");
+            
         }
     }
 }

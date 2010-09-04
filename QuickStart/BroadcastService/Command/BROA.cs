@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SuperSocket.SocketServiceCore.Command;
 
-namespace BroadcastService.Command
+namespace SuperSocket.QuickStart.BroadcastService.Command
 {
     public class BROA : CommandBase<BroadcastSession>
     {

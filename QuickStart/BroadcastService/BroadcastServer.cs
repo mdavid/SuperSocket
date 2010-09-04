@@ -6,7 +6,7 @@ using System.Threading;
 using SuperSocket.Common;
 using SuperSocket.SocketServiceCore;
 
-namespace BroadcastService
+namespace SuperSocket.QuickStart.BroadcastService
 {
     public class BroadcastServer : AppServer<BroadcastSession>, IAsyncRunner
     {
