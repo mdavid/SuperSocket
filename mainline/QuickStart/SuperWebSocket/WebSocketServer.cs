@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using SuperSocket.SocketServiceCore;
 
-namespace NWebSocket
+namespace SuperWebSocket
 {
-    public class NWebSocketServer : AppServer<NWebSocketSession>
+    public class WebSocketServer : AppServer<WebSocketSession>
     {
-        public NWebSocketServer()
+        public WebSocketServer()
             : base()
         {
-            Protocol = new NWebSocketProtocol();
+            Protocol = new WebSocketProtocol();
         }
     }
 }

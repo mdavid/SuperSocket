@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using SuperSocket.SocketServiceCore;
 
-namespace NWebSocket
+namespace SuperWebSocket
 {
-    public class NWebSocketSession : AppSession<NWebSocketSession, NWebSocketServer, NWebSocketContext>
+    public class WebSocketSession : AppSession<WebSocketSession, WebSocketServer, WebSocketContext>
     {
         protected override void OnClosed()
         {

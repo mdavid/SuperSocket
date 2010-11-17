@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using SuperSocket.SocketServiceCore;
 
-namespace NWebSocket
+namespace SuperWebSocket
 {
-    public class NWebSocketContext : SocketContext
+    public class WebSocketContext : SocketContext
     {
 
     }

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NWebSocket.Protocol;
+using SuperWebSocket.Protocol;
 using SuperSocket.SocketServiceCore.Protocol;
 
-namespace NWebSocket
+namespace SuperWebSocket
 {
-    public class NWebSocketProtocol : SocketProtocolBase, IAsyncProtocol
+    public class WebSocketProtocol : SocketProtocolBase, IAsyncProtocol
     {
         #region IAsyncProtocol Members
 
