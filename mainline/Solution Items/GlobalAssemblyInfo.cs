@@ -12,6 +12,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.4.0.0")]
 [assembly: AssemblyCompany("SuperSocket")]
 [assembly: AssemblyProduct("SuperSocket")]
-[assembly: AssemblyCopyright("Copyright © supersocket.codeplex.com 2010")]
+[assembly: AssemblyCopyright("Copyright © supersocket.codeplex.com 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
