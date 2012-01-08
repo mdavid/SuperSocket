@@ -17,7 +17,7 @@ namespace SuperSocket.QuickStart.GPSSocketServer
     /// if data[15] = 0x10, the command is a keep alive one
     /// if data[15] = 0x1a, the command is position one
     /// </summary>
-    class GPSCommandReader : CommandReaderBase<BinaryRequestInfo>
+    class GPSRequestFilter : RequestFilterBase<BinaryRequestInfo>
     {
         private static byte[] m_StartMark = new byte[] { 0x68, 0x68 };
         private static byte[] m_EndMark = new byte[] { 0x0d, 0x0a };
@@ -27,14 +27,13 @@ namespace SuperSocket.QuickStart.GPSSocketServer
 
         private bool m_FoundStart = false;
 
-        public GPSCommandReader(IAppServer appServer)
-            : base(appServer)
+        public GPSRequestFilter()
         {
             m_StartSearchState = new SearchMarkState<byte>(m_StartMark);
             m_EndSearchState = new SearchMarkState<byte>(m_EndMark);
         }
 
-        public override BinaryRequestInfo FindRequestInfo(IAppSession session, byte[] readBuffer, int offset, int length, bool isReusableBuffer, out int left)
+        public override BinaryRequestInfo Filter(IAppSession<BinaryRequestInfo> session, byte[] readBuffer, int offset, int length, bool toBeCopied, out int left)
         {
             left = 0;
 
@@ -64,7 +63,7 @@ namespace SuperSocket.QuickStart.GPSSocketServer
 
                 if (endPos < 0)
                 {
-                    AddArraySegment(readBuffer, pos, length + offset - pos, isReusableBuffer);
+                    AddArraySegment(readBuffer, pos, length + offset - pos, toBeCopied);
                     return null;
                 }
 
@@ -83,7 +82,7 @@ namespace SuperSocket.QuickStart.GPSSocketServer
                 //Haven't found end mark
                 if (endPos < 0)
                 {
-                    AddArraySegment(readBuffer, offset, length, isReusableBuffer);
+                    AddArraySegment(readBuffer, offset, length, toBeCopied);
                     return null;
                 }
 

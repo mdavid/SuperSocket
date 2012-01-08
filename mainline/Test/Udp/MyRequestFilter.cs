@@ -7,16 +7,9 @@ using SuperSocket.SocketBase;
 
 namespace SuperSocket.Test.Udp
 {
-    class MyCommandReader : ICommandReader<MyUdpRequestInfo>
+    class MyRequestFilter : IRequestFilter<MyUdpRequestInfo>
     {
-        public MyCommandReader(IAppServer appServer)
-        {
-            AppServer = appServer;
-        }
-
-        public IAppServer AppServer { get; protected set; }
-
-        public MyUdpRequestInfo FindRequestInfo(IAppSession session, byte[] readBuffer, int offset, int length, bool isReusableBuffer, out int left)
+        public MyUdpRequestInfo Filter(IAppSession<MyUdpRequestInfo> session, byte[] readBuffer, int offset, int length, bool toBeCopied, out int left)
         {
             left = 0;
 
@@ -36,7 +29,7 @@ namespace SuperSocket.Test.Udp
             get { return 0; }
         }
 
-        public ICommandReader<MyUdpRequestInfo> NextCommandReader
+        public IRequestFilter<MyUdpRequestInfo> NextRequestFilter
         {
             get { return this; }
         }

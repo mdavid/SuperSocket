@@ -10,7 +10,7 @@ namespace SuperSocket.QuickStart.CustomCommandParser
     public class YourServer : AppServer<YourSession>
     {
         public YourServer()
-            : base(new CommandLineProtocol(new CustomCommandParser()))
+            : base(new CommandLineRequestFilterFactory(Encoding.Default, new CustomRequestInfoParser()))
         {
  
         }

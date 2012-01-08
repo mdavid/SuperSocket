@@ -3,56 +3,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SuperSocket.SocketBase.Command
+namespace SuperSocket.SocketBase.Protocol
 {
     /// <summary>
-    /// It is a command parser for the command whose command name and command parameters are separated by specific char(s)
+    /// Basic request info parser, which parse request info by separating
     /// </summary>
-    public class BasicCommandParser : ICommandParser
+    public class BasicRequestInfoParser : IRequestInfoParser<StringRequestInfo>
     {
         private string m_Spliter;
         private string[] m_ParameterSpliters;
 
+        private const string m_OneSpace = " ";
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="BasicCommandParser"/> class.
+        /// Initializes a new instance of the <see cref="BasicRequestInfoParser"/> class.
         /// </summary>
-        public BasicCommandParser() : this(" ", " ")
+        public BasicRequestInfoParser()
+            : this(m_OneSpace, m_OneSpace)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BasicCommandParser"/> class.
+        /// Initializes a new instance of the <see cref="BasicRequestInfoParser"/> class.
         /// </summary>
         /// <param name="spliter">The spliter between command name and command parameters.</param>
         /// <param name="parameterSpliter">The parameter spliter.</param>
-        public BasicCommandParser(string spliter, string parameterSpliter)
+        public BasicRequestInfoParser(string spliter, string parameterSpliter)
         {
             m_Spliter = spliter;
             m_ParameterSpliters = new string[] { parameterSpliter };
         }
 
-        #region ICommandParser Members
+        #region IRequestInfoParser<StringRequestInfo> Members
 
         /// <summary>
-        /// Parses the command.
+        /// Parses the request info.
         /// </summary>
-        /// <param name="command">The command.</param>
+        /// <param name="source">The source.</param>
         /// <returns></returns>
-        public StringRequestInfo ParseCommand(string command)
+        public StringRequestInfo ParseRequestInfo(string source)
         {
-            int pos = command.IndexOf(m_Spliter);
+            int pos = source.IndexOf(m_Spliter);
 
             string name = string.Empty;
             string param = string.Empty;
 
             if (pos > 0)
             {
-                name = command.Substring(0, pos);
-                param = command.Substring(pos + 1);
+                name = source.Substring(0, pos);
+                param = source.Substring(pos + 1);
             }
             else
             {
-                name = command;
+                name = source;
             }
 
             return new StringRequestInfo(name, param,

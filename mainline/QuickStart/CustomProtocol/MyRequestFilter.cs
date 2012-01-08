@@ -9,34 +9,17 @@ using SuperSocket.SocketBase.Protocol;
 
 namespace SuperSocket.QuickStart.CustomProtocol
 {
-    class MyCommandReader : CommandReaderBase<BinaryRequestInfo>
+    class MyRequestFilter : RequestFilterBase<BinaryRequestInfo>
     {
-        private readonly MyCommandDataReader m_PreparedDataReader = new MyCommandDataReader();
+        private readonly MyDataRequestFilter m_PreparedDataReader = new MyDataRequestFilter();
 
-        public MyCommandReader(IAppServer appServer)
-            : base(appServer)
-        {
-
-        }
-
-        private MyCommandDataReader GetMyCommandDataReader(string commandName, int dataLength)
+        private MyDataRequestFilter GetMyCommandDataReader(string commandName, int dataLength)
         {
             m_PreparedDataReader.Initialize(commandName, dataLength, this);
             return m_PreparedDataReader;
         }
 
-        /// <summary>
-        /// Finds the request info.
-        /// "SEND 0008 xg^89W(v"
-        /// Read 10 chars as command name and command data length
-        /// </summary>
-        /// <param name="session">The session.</param>
-        /// <param name="readBuffer">The read buffer.</param>
-        /// <param name="offset">The offset.</param>
-        /// <param name="length">The length.</param>
-        /// <param name="isReusableBuffer">if set to <c>true</c> [is reusable buffer].</param>
-        /// <returns></returns>
-        public override BinaryRequestInfo FindRequestInfo(IAppSession session, byte[] readBuffer, int offset, int length, bool isReusableBuffer, out int left)
+        public override BinaryRequestInfo Filter(IAppSession<BinaryRequestInfo> session, byte[] readBuffer, int offset, int length, bool toBeCopied, out int left)
         {
             left = 0;
 
@@ -44,12 +27,12 @@ namespace SuperSocket.QuickStart.CustomProtocol
 
             if (length < leftLength)
             {
-                AddArraySegment(readBuffer, offset, length, isReusableBuffer);
-                NextCommandReader = this;
+                AddArraySegment(readBuffer, offset, length, toBeCopied);
+                NextRequestFilter = this;
                 return null;
             }
 
-            AddArraySegment(readBuffer, offset, leftLength, isReusableBuffer);
+            AddArraySegment(readBuffer, offset, leftLength, toBeCopied);
 
             string commandName = BufferSegments.Decode(Encoding.ASCII, 0, 4);
             int commandDataLength = Convert.ToInt32(BufferSegments.Decode(Encoding.ASCII, 5, 4).TrimStart('0'));
@@ -61,7 +44,7 @@ namespace SuperSocket.QuickStart.CustomProtocol
                 {
                     byte[] commandData = readBuffer.CloneRange(offset + leftLength, commandDataLength);
                     BufferSegments.ClearSegements();
-                    NextCommandReader = this;
+                    NextRequestFilter = this;
                     var requestInfo = new BinaryRequestInfo(commandName, commandData);
 
                     //The next requestInfo is comming
@@ -75,14 +58,14 @@ namespace SuperSocket.QuickStart.CustomProtocol
                     //Clear previous cached header data
                     BufferSegments.ClearSegements();
                     //Save left data part
-                    AddArraySegment(readBuffer, offset + leftLength, length - leftLength, isReusableBuffer);
-                    NextCommandReader = GetMyCommandDataReader(commandName, commandDataLength);
+                    AddArraySegment(readBuffer, offset + leftLength, length - leftLength, toBeCopied);
+                    NextRequestFilter = GetMyCommandDataReader(commandName, commandDataLength);
                     return null;
                 }
             }
             else
             {
-                NextCommandReader = GetMyCommandDataReader(commandName, commandDataLength);
+                NextRequestFilter = GetMyCommandDataReader(commandName, commandDataLength);
                 return null;
             }
         }

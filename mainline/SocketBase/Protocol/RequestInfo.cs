@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SuperSocket.SocketBase.Command
+namespace SuperSocket.SocketBase.Protocol
 {
     public class RequestInfo<TRequestData> : IRequestInfo<TRequestData>
     {

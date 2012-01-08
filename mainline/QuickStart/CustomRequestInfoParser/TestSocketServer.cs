@@ -9,6 +9,7 @@ using NUnit.Framework;
 using SuperSocket.SocketBase.Config;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketEngine;
+using SuperSocket.Common.Logging;
 
 namespace SuperSocket.QuickStart.CustomCommandParser
 {
@@ -18,19 +19,18 @@ namespace SuperSocket.QuickStart.CustomCommandParser
         [Test]
         public void TestECHO()
         {
+            LogFactoryProvider.Initialize(new ConsoleLogFactory());
+
             IServerConfig config = new ServerConfig
             {
                 Name = "My Custom Server",
                 Ip = "Any",
                 Port = 100,
-                Mode = SocketMode.Async,
+                Mode = SocketMode.Tcp,
                 MaxConnectionNumber = 1
             };
 
-            var rootConfig = new RootConfig
-            {
-                LoggingMode = LoggingMode.Console
-            };
+            var rootConfig = new RootConfig();
 
             YourServer server = new YourServer();
             server.Setup(rootConfig, config, SocketServerFactory.Instance);

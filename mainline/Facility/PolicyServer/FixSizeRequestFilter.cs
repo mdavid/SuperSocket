@@ -9,20 +9,17 @@ using SuperSocket.Common;
 
 namespace SuperSocket.Facility.PolicyServer
 {
-    public class FixSizeCommandReader : ICommandReader<BinaryRequestInfo>
+    public class FixSizeRequestFilter : IRequestFilter<BinaryRequestInfo>
     {
         private byte[] m_Buffer;
         private int m_CurrentReceived = 0;
 
-        public FixSizeCommandReader(IAppServer appServer, int fixCommandSize)
+        public FixSizeRequestFilter(int fixCommandSize)
         {
-            AppServer = appServer;
             m_Buffer = new byte[fixCommandSize];
         }
 
-        public IAppServer AppServer { get; private set; }
-
-        public BinaryRequestInfo FindRequestInfo(IAppSession session, byte[] readBuffer, int offset, int length, bool isReusableBuffer, out int left)
+        public BinaryRequestInfo Filter(IAppSession<BinaryRequestInfo> session, byte[] readBuffer, int offset, int length, bool toBeCopied, out int left)
         {
             left = 0;
 
@@ -44,17 +41,12 @@ namespace SuperSocket.Facility.PolicyServer
             return new BinaryRequestInfo("REQU", m_Buffer);
         }
 
-        public byte[] GetLeftBuffer()
-        {
-            return m_Buffer.Take(m_CurrentReceived).ToArray();
-        }
-
         public int LeftBufferSize
         {
             get { return m_CurrentReceived; }
         }
 
-        public ICommandReader<BinaryRequestInfo> NextCommandReader
+        public IRequestFilter<BinaryRequestInfo> NextRequestFilter
         {
             get { return null; }
         }
