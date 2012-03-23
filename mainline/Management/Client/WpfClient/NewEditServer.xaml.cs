@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SuperSocket.Management.Client
 {
     /// <summary>
-    /// Interaction logic for ServerList.xaml
+    /// Interaction logic for NewEditServer.xaml
     /// </summary>
-    public partial class ServerList : UserControl
+    public partial class NewEditServer : UserControl
     {
-        public ServerList()
+        public NewEditServer()
         {
             InitializeComponent();
         }
