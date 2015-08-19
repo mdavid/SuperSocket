@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BEAF6CBD-16DD-456B-A889-421E0DFAB783}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Solution Items\GlobalAssemblyInfo.cs = ..\..\Solution Items\GlobalAssemblyInfo.cs
+		..\..\Solution Items\log4net.config = ..\..\Solution Items\log4net.config
+		..\..\Solution Items\log4net.unix.config = ..\..\Solution Items\log4net.unix.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net35", "Net35", "{FC181BA8-9DE5-444C-899F-9C554BC65629}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Solution Items\Net35\App.config = ..\..\Solution Items\Net35\App.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net40", "Net40", "{ACCCC9EB-6386-44DC-8147-D69751FC6D93}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Solution Items\Net40\App.config = ..\..\Solution Items\Net40\App.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.WebSocket.Net45", "SuperSocket.WebSocket.Net45.csproj", "{DB6DD6E8-ABDE-4C4A-A3E2-DF49C074433B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.ProtoBase.Net45", "..\..\ProtoBase\SuperSocket.ProtoBase.Net45.csproj", "{88C9312E-7520-4F6B-BF25-30DA5990D270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.WebSocket.Test", "..\WebSocket.Test\SuperSocket.WebSocket.Test.csproj", "{0B5AE66D-CB41-4C04-A581-5293F31995C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Test|Any CPU = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB6DD6E8-ABDE-4C4A-A3E2-DF49C074433B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB6DD6E8-ABDE-4C4A-A3E2-DF49C074433B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB6DD6E8-ABDE-4C4A-A3E2-DF49C074433B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB6DD6E8-ABDE-4C4A-A3E2-DF49C074433B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB6DD6E8-ABDE-4C4A-A3E2-DF49C074433B}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{DB6DD6E8-ABDE-4C4A-A3E2-DF49C074433B}.Test|Any CPU.Build.0 = Release|Any CPU
+		{88C9312E-7520-4F6B-BF25-30DA5990D270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88C9312E-7520-4F6B-BF25-30DA5990D270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88C9312E-7520-4F6B-BF25-30DA5990D270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88C9312E-7520-4F6B-BF25-30DA5990D270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88C9312E-7520-4F6B-BF25-30DA5990D270}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{88C9312E-7520-4F6B-BF25-30DA5990D270}.Test|Any CPU.Build.0 = Release|Any CPU
+		{0B5AE66D-CB41-4C04-A581-5293F31995C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B5AE66D-CB41-4C04-A581-5293F31995C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B5AE66D-CB41-4C04-A581-5293F31995C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B5AE66D-CB41-4C04-A581-5293F31995C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B5AE66D-CB41-4C04-A581-5293F31995C8}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{0B5AE66D-CB41-4C04-A581-5293F31995C8}.Test|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC181BA8-9DE5-444C-899F-9C554BC65629} = {BEAF6CBD-16DD-456B-A889-421E0DFAB783}
+		{ACCCC9EB-6386-44DC-8147-D69751FC6D93} = {BEAF6CBD-16DD-456B-A889-421E0DFAB783}
+	EndGlobalSection
+EndGlobal
